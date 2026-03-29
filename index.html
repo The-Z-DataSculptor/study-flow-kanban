@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- Declares this document as HTML5 so the browser knows how to render it -->
+
+<html lang="en">
+  <!-- Root element of the page; "lang" helps search engines & accessibility tools -->
+
+  <head>
+    <!-- Contains settings and information ABOUT the page (not visible content) -->
+
+    <meta charset="UTF-8" />
+    <!-- Allows all characters (English, symbols, etc.) to display correctly -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes layout responsive on mobile screens -->
+
+    <title>Study Flow | Zain Hassan</title>
+    <!-- Text shown in browser tab -->
+
+    <link rel="stylesheet" href="KB.css" />
+    <!-- Connects your CSS file to style the page -->
+  </head>
+
+  <body>
+    <!-- All visible content goes inside body -->
+
+    <div class="header-container">
+      <!-- Wrapper for the top heading section -->
+
+      <h1 class="app-header">Study Flow</h1>
+      <!-- Main title of your app -->
+
+      <span class="app-author">by Zain Hassan</span>
+      <!-- Small text showing author name -->
+    </div>
+
+    <div class="kanban-board">
+      <!-- Main container holding all columns (the board itself) -->
+
+      <div class="column" id="col-todo">
+        <!-- First column: "To Do" tasks -->
+
+        <h3>To Do List</h3>
+        <!-- Title of this column -->
+
+        <div class="task-list"></div>
+        <!-- Empty container where tasks will be added by JavaScript -->
+      </div>
+
+      <div class="column" id="col-progress">
+        <!-- Second column: "In Progress" -->
+
+        <h3>In Progress</h3>
+        <!-- Column heading -->
+
+        <div class="task-list"></div>
+        <!-- Empty list where tasks will be moved dynamically -->
+      </div>
+
+      <div class="column" id="col-done">
+        <!-- Third column: "Done" -->
+
+        <h3>Done</h3>
+        <!-- Column heading -->
+
+        <div class="task-list"></div>
+        <!-- Empty list for completed tasks -->
+      </div>
+    </div>
+
+    <div class="main-input-area">
+      <!-- Section where user adds new tasks -->
+
+      <input type="text" id="master-input" placeholder="Type a new task..." />
+      <!-- Input field for typing tasks -->
+
+      <select id="column-selector">
+        <!-- Dropdown to choose which column to add task into -->
+
+        <option value="col-todo">To Do</option>
+        <!-- Option to add task to To Do -->
+
+        <option value="col-progress">In Progress</option>
+        <!-- Option for In Progress -->
+
+        <option value="col-done">Done</option>
+        <!-- Option for Done -->
+      </select>
+
+      <span class="hint">Press Enter to add</span>
+      <!-- Instruction text for user -->
+    </div>
+
+    <script src="KB.js"></script>
+    <!-- Links JavaScript file that adds functionality (add, drag, delete, save) -->
+  </body>
+</html>
+<!-- End of the HTML document -->

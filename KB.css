@@ -1,0 +1,289 @@
+/* 1. IMPORT FONT FROM GOOGLE */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"); /* Imports Poppins font from Google Fonts */
+
+/* ==========================================
+   2. GLOBAL RESET
+   ========================================== */
+* {
+  /* Selects ALL elements */
+  margin: 0; /* Removes default margin from all elements */
+  padding: 0; /* Removes default padding from all elements */
+  box-sizing: border-box; /* Includes padding & border inside width/height */
+}
+
+/* ==========================================
+   3. THE BACKGROUND & HEADER
+   ========================================== */
+body {
+  /* Styles the whole page */
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  ); /* Creates gradient background */
+  display: flex; /* Enables flexbox layout */
+  flex-direction: column; /* Stacks children vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Makes body at least full screen height */
+  font-family: "Poppins", sans-serif; /* Applies imported font */
+  padding: 20px; /* Adds space inside body */
+}
+
+.header-container {
+  /* Container for title and author */
+  display: flex; /* Places items in a row */
+  align-items: baseline; /* Aligns text based on baseline */
+  gap: 15px; /* Adds space between items */
+  margin-bottom: 30px; /* Space below header */
+}
+
+.app-header {
+  /* Main heading */
+  color: white; /* Text color */
+  font-size: 3.5rem; /* Large text size */
+  font-weight: 700; /* Bold text */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds shadow to text */
+  margin: 0; /* Removes default margin */
+}
+
+.app-author {
+  /* Author name styling */
+  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+  font-size: 1rem; /* Normal text size */
+  font-style: italic; /* Italic text */
+  font-weight: 300; /* Light font weight */
+  font-family: "Georgia", serif; /* Different font for style */
+  letter-spacing: 1px; /* Adds space between letters */
+  white-space: nowrap; /* Prevents text from breaking into new line */
+}
+
+/* ==========================================
+   4. THE KANBAN BOARD
+   ========================================== */
+.kanban-board {
+  /* Main board container */
+  display: flex; /* Places columns side by side */
+  gap: 20px; /* Space between columns */
+  align-items: flex-start; /* Aligns columns at the top */
+  margin-bottom: 30px; /* Space below board */
+}
+
+.column {
+  /* Each column (To Do, Progress, Done) */
+  width: 300px; /* Fixed width */
+  min-height: 450px; /* Minimum height */
+  border-radius: 16px; /* Rounded corners */
+  padding: 20px; /* Inner spacing */
+  backdrop-filter: blur(10px); /* Glass blur effect */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Light border */
+  border-top: 8px solid #ccc; /* Top colored border (default) */
+}
+
+#col-todo {
+  /* To Do column styling */
+  border-top-color: #3498db; /* Blue top border */
+  background-color: rgba(235, 245, 251, 0.8); /* Light blue background */
+}
+
+#col-progress {
+  /* In Progress column */
+  border-top-color: #f39c12; /* Orange top border */
+  background-color: rgba(254, 245, 231, 0.8); /* Light orange background */
+}
+
+#col-done {
+  /* Done column */
+  border-top-color: #2ecc71; /* Green top border */
+  background-color: rgba(234, 250, 241, 0.8); /* Light green background */
+}
+
+.column h3 {
+  /* Column titles */
+  font-weight: 700; /* Bold text */
+  font-size: 0.85rem; /* Small text */
+  text-transform: uppercase; /* Converts text to uppercase */
+  letter-spacing: 2px; /* Adds spacing between letters */
+  color: #576574; /* Text color */
+  text-align: center; /* Centers text */
+  padding-bottom: 10px; /* Space below text */
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2); /* Bottom border line */
+  width: 60%; /* Limits width */
+  margin: 0 auto 25px auto; /* Centers and adds bottom space */
+}
+
+.task-list {
+  /* Container for cards */
+  min-height: 380px; /* Keeps space even if empty */
+}
+
+/* ==========================================
+   5. CARDS
+   ========================================== */
+.card {
+  /* Individual task card */
+  position: relative; /* Needed for absolute positioning inside */
+  display: flex; /* Aligns content horizontally */
+  justify-content: space-between; /* Pushes text & button apart */
+  align-items: center; /* Vertically centers content */
+  background-color: #ffffff; /* White background */
+  padding: 12px 16px; /* Inner spacing */
+  padding-right: 35px; /* Extra space for delete button */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 12px; /* Space between cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Soft shadow */
+  border-left: 5px solid #ddd; /* Left border line */
+  font-size: 14px; /* Text size */
+  line-height: 1.4; /* Line spacing */
+  color: #2d3436; /* Text color */
+  font-weight: 500; /* Medium weight */
+  word-wrap: break-word; /* Break long text */
+  cursor: grab; /* Cursor shows draggable */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth animation */
+}
+
+.card:hover {
+  /* When mouse hovers card */
+  transform: translateY(-4px); /* Moves card up */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+  border-left-color: #667eea; /* Changes border color */
+}
+
+.delete-btn {
+  /* Delete (X) button */
+  position: absolute; /* Positions relative to card */
+  right: 10px; /* Distance from right */
+  top: 50%; /* Middle vertically */
+  transform: translateY(-50%); /* Perfect vertical centering */
+  background: none; /* Removes background */
+  border: none; /* Removes border */
+  color: #ff4d4d; /* Red color */
+  font-size: 20px; /* Bigger icon */
+  cursor: pointer; /* Pointer cursor */
+  opacity: 0.4; /* Slightly transparent */
+  transition:
+    opacity 0.2s,
+    transform 0.2s; /* Smooth hover animation */
+}
+
+.delete-btn:hover {
+  /* On hover */
+  opacity: 1; /* Fully visible */
+  color: #ff0000; /* Strong red */
+  transform: translateY(-50%) scale(1.2); /* Slight zoom effect */
+}
+
+/* ==========================================
+   6. INPUT AREA & DROPDOWN
+   ========================================== */
+.main-input-area {
+  /* Bottom input section */
+  display: flex; /* Layout in row */
+  gap: 15px; /* Space between items */
+  align-items: center; /* Vertical alignment */
+  background: rgba(255, 255, 255, 0.2); /* Transparent background */
+  padding: 9px 22px; /* Inner spacing */
+  border-radius: 50px; /* Rounded pill shape */
+  backdrop-filter: blur(5px); /* Blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow */
+}
+
+#master-input {
+  /* Text input */
+  background: white; /* White background */
+  border: none; /* No border */
+  padding: 10px 20px; /* Inner spacing */
+  border-radius: 25px; /* Rounded corners */
+  width: 300px; /* Fixed width */
+  font-family: inherit; /* Uses same font */
+  font-size: 16px; /* Text size */
+  outline: none; /* Removes blue outline */
+}
+
+#column-selector { /* Targets the dropdown <select> element using its ID */
+
+  /* 1. HIDE THE DEFAULT ARROW */
+  -webkit-appearance: none; /* Removes default styling in Chrome/Safari (WebKit browsers) */
+  -moz-appearance: none; /* Removes default styling in Firefox */
+  appearance: none; /* Standard property to remove default browser styles */
+
+  /* 2. CUSTOM STYLING */
+  background-color: white; /* Sets background color to white */
+  border: none; /* Removes default border around dropdown */
+  padding: 10px 40px 10px 20px; /* Adds space inside: top, right (extra for arrow), bottom, left */
+  border-radius: 25px; /* Makes rounded corners (pill shape) */
+  font-family: inherit; /* Uses same font as parent (body) */
+  font-size: 14px; /* Sets text size */
+  cursor: pointer; /* Changes cursor to hand icon when hovering */
+  outline: none; /* Removes blue outline when clicked (focus state) */
+  color: #2d3436; /* Sets text color */
+  font-weight: 500; /* Medium font thickness */
+
+  /* 3. THE FULL ARROW CODE (Don't change this part!) */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d3436' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); /* Adds a custom arrow icon using inline SVG */
+
+  background-repeat: no-repeat; /* Prevents the arrow image from repeating */
+  background-position: right 15px center; /* Positions arrow on right side, centered vertically */
+  background-size: 12px; /* Controls size of the arrow icon */
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+}
+
+.hint {
+  /* Hint text */
+  color: white; /* White text */
+  font-size: 16px; /* Size */
+  font-weight: 500; /* Medium weight */
+  opacity: 1.9; /* Slight transparency */
+}
+
+/* ==========================================
+   7. MOBILE RESPONSIVENESS
+   ========================================== */
+@media (max-width: 768px) {
+  /* Applies styles on small screens */
+
+  .header-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align */
+    gap: 5px; /* Smaller gap */
+    text-align: center; /* Center text */
+  }
+
+  .app-header {
+    font-size: 2.5rem; /* Smaller heading */
+  }
+
+  .kanban-board {
+    flex-direction: column; /* Stack columns vertically */
+    align-items: center; /* Center */
+    width: 100%; /* Full width */
+  }
+
+  .column {
+    width: 100%; /* Full width */
+    max-width: 350px; /* Limit size */
+    min-height: auto; /* Remove fixed height */
+    margin-bottom: 20px; /* Space between columns */
+  }
+
+  .main-input-area {
+    flex-direction: column; /* Stack input elements */
+    width: 100%; /* Full width */
+    max-width: 350px; /* Limit width */
+    border-radius: 20px; /* Less rounded */
+    padding: 20px; /* More padding */
+  }
+
+  #master-input,
+  #column-selector {
+    width: 100%; /* Full width inputs */
+  }
+
+  .delete-btn {
+    opacity: 1; /* Always visible on mobile */
+    padding: 10px; /* Bigger clickable area */
+  }
+}
